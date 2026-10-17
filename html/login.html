@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>로그인 — 여행의 결</title>
+  <link rel="stylesheet" href="../css/common.css"><link rel="stylesheet" href="../css/pages.css">
+  <script type="module" src="../js/login.js"></script>
+</head>
+<body class="form-page">
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+  <header class="site-header"><div class="header-inner"><a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">ㄱ</span><span>여행의 결</span></a><a class="text-link" href="signup.html">회원가입</a></div></header>
+  <main id="main" class="form-main"><section class="form-card" aria-labelledby="login-title">
+    <p class="eyebrow">GOOD TO SEE YOU AGAIN</p><h1 id="login-title">로그인</h1><p class="form-intro">계정에 로그인해 예약을 이어가세요.</p>
+    <form id="login-form" novalidate>
+      <label for="email">이메일</label><input id="email" name="email" type="email" autocomplete="email" required>
+      <label for="password">비밀번호</label><input id="password" name="password" type="password" autocomplete="current-password" required>
+      <button class="button button-dark form-submit" type="submit">로그인</button><p class="form-error" id="form-error" role="alert" hidden></p>
+    </form>
+  </section></main>
+</body>
+</html>

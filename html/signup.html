@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>회원가입 — 여행의 결</title>
+  <link rel="stylesheet" href="../css/common.css"><link rel="stylesheet" href="../css/pages.css">
+  <script type="module" src="../js/signup.js"></script>
+</head>
+<body class="form-page">
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+  <header class="site-header"><div class="header-inner"><a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">ㄱ</span><span>여행의 결</span></a><a class="text-link" href="login.html">로그인</a></div></header>
+  <main id="main" class="form-main"><section class="form-card" aria-labelledby="signup-title">
+    <p class="eyebrow">WELCOME TO YOUR NEXT TRIP</p><h1 id="signup-title">회원가입</h1><p class="form-intro">여행의 결에서 다음 여행을 찾아보세요.</p>
+    <form id="signup-form" novalidate>
+      <label for="name">이름</label><input id="name" name="name" autocomplete="name" required maxlength="60">
+      <label for="phone">연락처 <span class="optional">선택</span></label><input id="phone" name="phone" type="tel" autocomplete="tel">
+      <label for="email">이메일</label><input id="email" name="email" type="email" autocomplete="email" required>
+      <label for="password">비밀번호</label><input id="password" name="password" type="password" autocomplete="new-password" minlength="6" required aria-describedby="password-help"><small id="password-help">6자 이상 입력해 주세요.</small>
+      <label for="password-confirm">비밀번호 확인</label><input id="password-confirm" name="passwordConfirm" type="password" autocomplete="new-password" minlength="6" required>
+      <button class="button button-dark form-submit" type="submit">회원가입</button><p class="form-error" id="form-error" role="alert" hidden></p>
+    </form>
+  </section></main>
+</body>
+</html>

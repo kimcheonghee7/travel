@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8f5">
+  <meta name="description" content="나에게 맞는 여행지를 찾고, 가까운 숙소를 둘러보세요.">
+  <title>여행의 결 — 여행지와 머무를 곳을 한 번에</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/common.css">
+  <script type="module" src="js/home.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="여행의 결 홈">
+        <span class="brand-mark" aria-hidden="true">ㄱ</span><span>여행의 결</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="메뉴 열기">
+        <span></span><span></span>
+      </button>
+      <nav class="primary-nav" id="primary-nav" aria-label="주 메뉴">
+        <a class="nav-link is-current" href="#destinations">여행지</a>
+        <a class="nav-link" href="#stays">숙소</a>
+        <a class="nav-link" href="#about">여행 이야기</a>
+      </nav>
+      <div class="header-actions">
+        <button class="header-action" type="button" data-reservation-action>예약</button>
+        <a class="header-action" data-auth-my-reservations href="html/my-reservations.html" hidden>내 예약</a>
+        <a class="header-action" data-auth-signup href="html/signup.html">회원가입</a>
+        <a class="header-action" data-auth-login href="html/login.html">로그인</a>
+        <a class="header-action" data-auth-admin href="html/admin-login.html">관리자</a>
+        <button class="header-action" data-auth-logout type="button" hidden>로그아웃</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-line"></span> A LITTLE CLOSER TO YOUR NEXT TRIP</p>
+        <h1 id="hero-title">여행의 순간을<br>천천히 <em>골라보세요.</em></h1>
+        <p class="hero-description">떠나고 싶은 곳을 발견하고,<br class="mobile-break"> 그곳에 머물 작은 쉼표까지.</p>
+        <a class="button button-dark hero-button" href="#destinations">여행지 둘러보기 <span aria-hidden="true">↗</span></a>
+        <div class="hero-note"><span class="note-dot"></span> 여행지와 주변 숙소를 한곳에서</div>
+      </div>
+      <div class="hero-art" role="img" aria-label="해 질 무렵 바다와 산을 바라보는 여행 풍경">
+        <div class="sun"></div><div class="hero-cloud cloud-one"></div><div class="hero-cloud cloud-two"></div>
+        <div class="mountain mountain-back"></div><div class="mountain mountain-front"></div>
+        <div class="sea"></div><div class="shore"></div>
+        <div class="art-caption"><span>01 / SLOW ESCAPE</span><span>강원도, 고성</span></div>
+        <div class="art-stamp" aria-hidden="true">take<br>your<br>time</div>
+      </div>
+      <div class="hero-index" aria-hidden="true"><span>01</span><i></i><span>03</span></div>
+    </section>
+
+    <section class="discovery section-wrap" id="destinations" aria-labelledby="discovery-title">
+      <div class="section-heading">
+        <div><p class="eyebrow">FIND YOUR PLACE</p><h2 id="discovery-title">어디로 떠나고 싶나요?</h2></div>
+        <a class="text-link" href="#destinations-grid">여행지 모두 보기 <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="filter-row" aria-label="여행지 테마">
+        <button class="filter-chip is-active" type="button" data-filter="all" aria-pressed="true">모두 보기</button>
+        <button class="filter-chip" type="button" data-filter="sea" aria-pressed="false">바다</button>
+        <button class="filter-chip" type="button" data-filter="forest" aria-pressed="false">산과 숲</button>
+        <button class="filter-chip" type="button" data-filter="city" aria-pressed="false">도시 산책</button>
+        <span class="filter-hint">마음이 향하는 곳부터</span>
+      </div>
+      <div class="destination-grid" id="destinations-grid">
+        <article class="destination-card destination-card-large" data-category="sea">
+          <a class="destination-visual visual-sea" href="#stays" aria-label="강원도 고성 여행지와 주변 숙소 살펴보기">
+            <span class="visual-tag">바다 · 느린 휴식</span><span class="visual-number">01</span>
+            <span class="visual-sun"></span><span class="visual-horizon"></span><span class="visual-coast"></span>
+          </a>
+          <div class="destination-info"><div><p class="destination-region">GANGWON · 강원도</p><h3>고성, 파도 옆의 하루</h3></div><a class="round-arrow" href="#stays" aria-label="고성 주변 숙소 보기">↗</a></div>
+          <p class="destination-summary">아침 바다를 걷고, 해 질 녘 작은 마을에 머물러요.</p>
+        </article>
+        <article class="destination-card" data-category="forest">
+          <a class="destination-visual visual-forest" href="#stays" aria-label="제주 여행지와 주변 숙소 살펴보기">
+            <span class="visual-tag">숲 · 자연 속으로</span><span class="visual-number">02</span>
+            <span class="forest-sun"></span><span class="forest-ridge ridge-one"></span><span class="forest-ridge ridge-two"></span><span class="forest-tree tree-one"></span><span class="forest-tree tree-two"></span>
+          </a>
+          <div class="destination-info"><div><p class="destination-region">JEJU · 제주</p><h3>제주, 초록이 머무는 길</h3></div><a class="round-arrow" href="#stays" aria-label="제주 주변 숙소 보기">↗</a></div>
+          <p class="destination-summary">오름의 바람과 돌담길의 온기를 따라가요.</p>
+        </article>
+        <article class="destination-card" data-category="city">
+          <a class="destination-visual visual-city" href="#stays" aria-label="경주 여행지와 주변 숙소 살펴보기">
+            <span class="visual-tag">골목 · 오래된 풍경</span><span class="visual-number">03</span>
+            <span class="city-sky"></span><span class="city-moon"></span><span class="city-roof roof-one"></span><span class="city-roof roof-two"></span><span class="city-house"></span>
+          </a>
+          <div class="destination-info"><div><p class="destination-region">GYEONGJU · 경주</p><h3>경주, 천천히 걷는 밤</h3></div><a class="round-arrow" href="#stays" aria-label="경주 주변 숙소 보기">↗</a></div>
+          <p class="destination-summary">오래된 담장 너머로 하루의 끝을 만나요.</p>
+        </article>
+      </div>
+      <p class="preview-note">화면 미리보기용 여행지 예시입니다. Firebase 연결 후 실제 등록된 여행지로 바뀝니다.</p>
+    </section>
+
+    <section class="stay-promo" id="stays" aria-labelledby="stay-title">
+      <div class="promo-copy"><p class="eyebrow">STAY A LITTLE LONGER</p><h2 id="stay-title">그곳에서의 하루를<br><em>머물 곳까지</em> 찾아보세요.</h2><p>여행지 가까이에 있는 숙소를 둘러보고<br>내 여행에 어울리는 쉼을 골라보세요.</p><a class="button button-light" href="#destinations">주변 숙소 둘러보기 <span aria-hidden="true">↗</span></a></div>
+      <div class="promo-decoration" aria-hidden="true"><div class="promo-window"><span class="window-sky"></span><span class="window-hill"></span><span class="window-sea"></span></div><div class="promo-card"><span class="promo-card-icon">⌂</span><span>다음 여행의<br><strong>머무를 자리</strong></span><span class="promo-card-arrow">↗</span></div><span class="promo-orbit orbit-one"></span><span class="promo-orbit orbit-two"></span></div>
+    </section>
+
+    <section class="closing section-wrap" id="about">
+      <span class="closing-mark" aria-hidden="true">“</span><p>좋은 여행은<br><em>마음에 남는 속도로.</em></p><span class="closing-caption">여행의 결은 당신의 다음 여행을 함께 찾습니다.</span>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="footer">
+    <div class="footer-main"><a class="brand footer-brand" href="index.html"><span class="brand-mark" aria-hidden="true">ㄱ</span><span>여행의 결</span></a><p>여행지와 그 곁의 숙소를 잇습니다.</p><nav aria-label="푸터 메뉴"><a href="#destinations">여행지</a><a href="#stays">숙소</a><a href="#main">맨 위로 ↑</a></nav></div>
+    <div class="footer-bottom"><span>© 2026 여행의 결</span><span>당신의 다음 장면을 찾아서</span></div>
+  </footer>
+  <button class="back-to-top" type="button" aria-label="페이지 맨 위로 이동" title="맨 위로">
+    <span aria-hidden="true">↑</span>
+  </button>
+</body>
+</html>

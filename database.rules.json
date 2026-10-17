@@ -1,0 +1,54 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "admins": {
+      "$uid": {
+        ".read": "auth != null && (auth.uid === $uid || root.child('admins').child(auth.uid).val() === true)",
+        ".write": false
+      }
+    },
+    "destinations": {
+      ".read": "auth != null && root.child('admins').child(auth.uid).val() === true || query.orderByChild === 'isPublished' && query.equalTo === true",
+      ".indexOn": ["isPublished"],
+      "$id": {
+        ".read": "data.child('isPublished').val() === true || auth != null && root.child('admins').child(auth.uid).val() === true",
+        ".write": "auth != null && root.child('admins').child(auth.uid).val() === true"
+      }
+    },
+    "stays": {
+      ".read": "auth != null && root.child('admins').child(auth.uid).val() === true || query.orderByChild === 'isActive' && query.equalTo === true",
+      ".indexOn": ["isActive"],
+      "$id": {
+        ".read": "data.child('isActive').val() === true || auth != null && root.child('admins').child(auth.uid).val() === true",
+        ".write": "auth != null && root.child('admins').child(auth.uid).val() === true"
+      }
+    },
+    "members": {
+      ".read": "auth != null && root.child('admins').child(auth.uid).val() === true",
+      "$uid": {
+        ".read": "auth != null && (auth.uid === $uid || root.child('admins').child(auth.uid).val() === true)",
+        ".write": "auth != null && (root.child('admins').child(auth.uid).val() === true || auth.uid === $uid && newData.exists())",
+        ".validate": "!newData.exists() || newData.child('id').val() === $uid && newData.child('role').val() === 'member' && newData.child('status').val() === 'active'"
+      }
+    },
+    "reservations": {
+      ".read": "auth != null && root.child('admins').child(auth.uid).val() === true || auth != null && query.orderByChild === 'memberId' && query.equalTo === auth.uid",
+      ".indexOn": ["memberId"],
+      "$id": {
+        ".read": "auth != null && (data.child('memberId').val() === auth.uid || root.child('admins').child(auth.uid).val() === true)",
+        ".write": "auth != null && (root.child('admins').child(auth.uid).val() === true || newData.child('memberId').val() === auth.uid && (!data.exists() && newData.child('status').val() === 'requested' || data.child('memberId').val() === auth.uid && data.child('status').val() === 'requested' && newData.child('status').val() === 'cancelled'))",
+        ".validate": "!newData.exists() || root.child('admins').child(auth.uid).val() === true || newData.child('id').val() === $id && newData.child('memberId').val() === auth.uid && (newData.child('status').val() === 'cancelled' && data.exists() && data.child('memberId').val() === auth.uid && data.child('status').val() === 'requested' || newData.child('status').val() === 'requested' && newData.child('checkIn').isString() && newData.child('checkOut').isString() && newData.child('checkIn').val() < newData.child('checkOut').val() && newData.child('guestCount').isNumber() && newData.child('guestCount').val() >= 1 && newData.child('guestCount').val() <= root.child('stays').child(newData.child('stayId').val()).child('maxGuests').val() && root.child('stays').child(newData.child('stayId').val()).child('isActive').val() === true && root.child('stays').child(newData.child('stayId').val()).child('destinationId').val() === newData.child('destinationId').val() && root.child('destinations').child(newData.child('destinationId').val()).child('isPublished').val() === true)"
+      }
+    },
+    "availability": {
+      ".read": true,
+      "$stayId": {
+        "$date": {
+          ".write": "auth != null && (root.child('admins').child(auth.uid).val() === true || !newData.exists() && root.child('reservations').child(data.child('reservationId').val()).child('memberId').val() === auth.uid || newData.exists() && root.child('reservations').child(newData.child('reservationId').val()).child('memberId').val() === auth.uid && root.child('reservations').child(newData.child('reservationId').val()).child('stayId').val() === $stayId && root.child('reservations').child(newData.child('reservationId').val()).child('checkIn').val() <= $date && $date < root.child('reservations').child(newData.child('reservationId').val()).child('checkOut').val() && (!data.exists() || data.child('status').val() === 'cancelled'))",
+          ".validate": "!newData.exists() || newData.child('reservationId').isString() && (newData.child('status').val() === 'requested' || newData.child('status').val() === 'confirmed' || newData.child('status').val() === 'completed')"
+        }
+      }
+    }
+  }
+}
